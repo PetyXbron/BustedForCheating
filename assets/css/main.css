@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme static {
+    --font-sans: 'Public Sans', sans-serif;
+
+    --breakpoint-3xl: 1920px;
+
+    --color-redbow-50: #F9E7E7;
+    --color-redbow-100: #F3C9C9;
+    --color-redbow-200: #E89090;
+    --color-redbow-300: #DC5E5E;
+    --color-redbow-400: #D03C3C;
+    --color-redbow-500: #BA181B;
+    --color-redbow-600: #A4161A;
+    --color-redbow-700: #7F1215;
+    --color-redbow-800: #660708;
+    --color-redbow-900: #4B0405;
+    --color-redbow-950: #2A0202;
+}
+
+:root {
+    --ui-bg: #0B090A;
+}
+
+body span {
+    color: var(--ui-primary) !important;
+}
+
+a {
+    color: var(--ui-primary) !important;
+    text-decoration: underline !important;
+}
+
+::selection {
+	background: var(--color-redbow-700);
+}
+
+::selection span {
+    color: black;
+}
