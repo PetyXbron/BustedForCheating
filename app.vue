@@ -3,7 +3,7 @@
 		<div class="mt-40 ml-40 flex gap-40 h-[100%] text-white">
 			<div class="[&span]:text-red-500 [&>span]:font-bold max-w-[690px] w-[50%]">
 				<header>
-					<h1 class="text-7xl font-bold">Busted For <span>Cheating</span></h1>
+					<h1 class="text-7xl font-bold">Busted for <span>Cheating</span></h1>
 					<h2 class="text-4xl"><span>Online exams</span> and web apps<br>know when you cheat.</h2>
 				</header>
 				<p class="mt-25 text-xl">
@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 const changes = ref<Array<{ time: number, event: string }>>([])
-const timer = ref<number>()
+const timer = ref<ReturnType<typeof setInterval>>()
 
 const getRelativeTime = (timestamp: number): string => {
 	const seconds = Math.floor((Date.now() - timestamp) / 1000)
