@@ -1,4 +1,5 @@
 <template>
+	<Analytics />
 	<UApp>
 		<div class="mt-40 ml-40 flex gap-40 h-[100%] text-white">
 			<div class="[&span]:text-red-500 [&>span]:font-bold max-w-[690px] w-[50%]">
@@ -33,6 +34,7 @@
 </template>
 
 <script setup lang="ts">
+import { Analytics } from '@vercel/analytics/nuxt';
 const changes = ref<Array<{ time: number, event: string }>>([])
 const timer = ref<ReturnType<typeof setInterval>>()
 
