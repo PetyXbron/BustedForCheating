@@ -13,6 +13,11 @@ export default defineNuxtConfig({
 		port: 5007,
 	},
 	css: ['~/assets/css/main.css'],
+	icon: {
+		serverBundle: {
+			collections: ['akar-icons']
+		},
+	},
 	app: {
 		head: {
 			title: 'BFC',

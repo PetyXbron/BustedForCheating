@@ -21,6 +21,7 @@
 
 :root {
     --ui-bg: #0B090A;
+    --ui-primary: var(--ui-color-primary-500);
 }
 
 body span {

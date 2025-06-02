@@ -4,4 +4,8 @@ export default defineAppConfig({
             primary: 'redbow',
         },
     },
+    icon: {
+        mode: 'css',
+        cssLayer: 'base'
+    },
 })
