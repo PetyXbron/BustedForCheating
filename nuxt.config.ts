@@ -36,7 +36,7 @@ export default defineNuxtConfig({
 			ogUrl: `https://${process.env.domain || 'example.com'}`,
 			ogTitle: 'Busted for Cheating!',
 			ogSiteName: 'Online exams know when you cheat',
-			ogImage: '/media/bfc2.png',
+			ogImage: '/media/bfc-cropped.webp',
 			ogDescription: "Web apps can tell when you're not paying attention — or trying to cheat. Busted for Cheating reveals how simple browser features can expose your behavior during online tests.",
 		},
 	},
