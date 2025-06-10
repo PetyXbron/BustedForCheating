@@ -99,6 +99,8 @@ onMounted(() => {
 		event: 'Opened the page'
 	})
 
+	document.title = 'BFC | Tab active'
+
 	// Add 1 second interval
 	timer.value = setInterval(() => {
 		if (changes.value.length > 0) {
@@ -112,6 +114,7 @@ onMounted(() => {
 			time: Date.now(),
 			event: 'Left tab or window'
 		})
+		document.title = 'BFC | Tab closed'
 	})
 
 	// Return to tab or window event
@@ -120,6 +123,7 @@ onMounted(() => {
 			time: Date.now(),
 			event: 'Returned to tab or window'
 		})
+		document.title = 'BFC | Tab active'
 	})
 
 
