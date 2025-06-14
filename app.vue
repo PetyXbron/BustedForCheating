@@ -76,6 +76,20 @@
 				</div>
 			</div>
 		</div>
+		<div v-show="cookiesConsent" style="background-color: #161A1D;" class="fixed bottom-0 left-0 p-3 rounded-lg text-white flex flex-col justify-between md:w-[35%] mx-5 md:ml-5 h-[25%] mb-5">
+			<div>
+				<h1 class="font-bold 2xl:text-3xl xl:text-3xl lg:text-2xl md:text-xl"><span>Cookies consent</span></h1>
+				<p>
+					We use cookies to analyze traffic and improve your experience.<br>You can accept or reject their use.
+				</p>
+			</div>
+			<div>
+				<div class="flex gap-3 bottom-0">
+					<button @click="acceptCookies" class="bg-redbow-500 w-[50%] rounded-md p-2 cursor-pointer hover:bg-redbow-600 transition-colors duration-300">Accept</button>
+					<button @click="denyCookies" class="bg-redbow-500 w-[50%] rounded-md p-2 cursor-pointer hover:bg-redbow-600 transition-colors duration-300">Deny</button>
+				</div>
+			</div>
+		</div>
 	</UApp>
 </template>
 
@@ -84,6 +98,7 @@ import { Analytics } from '@vercel/analytics/nuxt';
 import { SpeedInsights } from "@vercel/speed-insights/nuxt";
 const changes = ref<Array<{ time: number, event: string }>>([])
 const timer = ref<ReturnType<typeof setInterval>>()
+const cookiesConsent = ref(false)
 
 // Function to get relative time in seconds
 const getRelativeTime = (timestamp: number): string => {
@@ -93,6 +108,12 @@ const getRelativeTime = (timestamp: number): string => {
 
 // Event listeners
 onMounted(() => {
+	// Fetch cookies consent localStorage
+	const savedConsent = localStorage.getItem('cookiesAccepted')
+	if (!savedConsent) {
+		cookiesConsent.value = true
+	}
+
 	// Log first event
 	changes.value.unshift({
 		time: Date.now(),
@@ -147,4 +168,29 @@ onUnmounted(() => {
 const limitedChanges = computed(() => {
 	return changes.value.slice(0, 50)
 })
+
+// Google consent mode
+const { gtag } = useGtag()
+
+function acceptCookies() {
+	gtag('consent', 'update', {
+		ad_user_data: 'granted',
+		ad_personalization: 'granted',
+		ad_storage: 'granted',
+		analytics_storage: 'granted'
+	})
+	localStorage.setItem('cookiesAccepted', 'true')
+	cookiesConsent.value = false
+}
+
+function denyCookies() {
+	gtag('consent', 'update', {
+		ad_user_data: 'denied',
+		ad_personalization: 'denied',
+		ad_storage: 'denied',
+		analytics_storage: 'denied'
+	})
+	localStorage.setItem('cookiesAccepted', 'false')
+	cookiesConsent.value = false
+}
 </script>

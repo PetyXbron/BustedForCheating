@@ -5,9 +5,9 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxt/fonts',
 		'@nuxt/ui',
-		'@nuxtjs/color-mode',
 		'@nuxtjs/seo',
 		'@nuxt/icon',
+		'nuxt-gtag'
 	],
 	devServer: {
 		port: 5007,
@@ -43,5 +43,17 @@ export default defineNuxtConfig({
 	site: {
 		url: `https://${process.env.domain || 'example.com'}`,
 		name: 'Busted for Cheating',
+	},
+	gtag: {
+		enabled: !import.meta.dev,
+		initCommands: [
+			['consent', 'default', {
+				ad_user_data: 'denied',
+				ad_personalization: 'denied',
+				ad_storage: 'denied',
+				analytics_storage: 'denied',
+				wait_for_update: 500,
+			}],
+		]
 	},
 })
